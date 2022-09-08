@@ -21,6 +21,10 @@ public class TipoDeAcao {
 		this.id = id;
 		this.nameTipoDeacao = nameTipoDeacao;
 	}
+	
+	public TipoDeAcao(Long id) {
+		this.id = id;
+	}
 
 	public TipoDeAcao() {
 	}

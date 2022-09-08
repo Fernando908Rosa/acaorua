@@ -20,6 +20,11 @@ public class Creas {
 	public Creas() {
 	}
 	
+	public Creas(Long id) {
+		super();
+		this.id = id;
+	}
+	
 	public Creas(Long id, String nome) {
 		super();
 		this.id = id;

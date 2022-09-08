@@ -47,14 +47,14 @@ public class CadastramentoDoAcompanhamentoController {
 	}
 	
 	@PostMapping("/cadastramentoDoAcompanhamento")
-	public ResponseEntity<CadastramentoDoAcompanhamentoResponseDto> salvar(@Valid @RequestBody CadastramentoDoAcompanhamentoRequestDto cadastramentoDoAcompanhamentoDto) {
-		CadastramentoDoAcompanhamento cadastramentoDoAcompanhamentoSalva = cadastramentoDoAcompanhamentoService.salvar(cadastramentoDoAcompanhamentoDto.converterCadastramentoDoAcompanhamentoRequestDtoParaEntidadeCadastramentoDoAcompanhamento());
+	public ResponseEntity<CadastramentoDoAcompanhamentoResponseDto> salvar(@PathVariable Long idCreas, @PathVariable Long idUnidade, @PathVariable Long idTipoDeAcao, @PathVariable Long idPessoa, @PathVariable Long idUsuario, @Valid @RequestBody CadastramentoDoAcompanhamentoRequestDto cadastramentoDoAcompanhamentoDto) {
+		CadastramentoDoAcompanhamento cadastramentoDoAcompanhamentoSalva = cadastramentoDoAcompanhamentoService.salvar(cadastramentoDoAcompanhamentoDto.converterCadastramentoDoAcompanhamentoRequestDtoParaEntidadeCadastramentoDoAcompanhamento(idCreas, idUnidade, idTipoDeAcao, idPessoa, idUsuario));
 		return ResponseEntity.status(HttpStatus.CREATED).body(CadastramentoDoAcompanhamentoResponseDto.converterCadastramentoDoAcompanhamentoParaCadastramentoDoAcompanhamentotoResponseDto(cadastramentoDoAcompanhamentoSalva));
 	}
 	
 	@PutMapping("/cadastramentoDoAcompanhamento/{id}")
-	public ResponseEntity<CadastramentoDoAcompanhamentoResponseDto> atualizar(@PathVariable Long id, @Valid @RequestBody CadastramentoDoAcompanhamentoRequestDto cadastramentoDoAcompanhamentoDto) {
-		CadastramentoDoAcompanhamento cadastramentoDoAcompanhamentoatualizado = cadastramentoDoAcompanhamentoService.atualizar(id, cadastramentoDoAcompanhamentoDto.converterCadastramentoDoAcompanhamentoRequestDtoParaEntidadeCadastramentoDoAcompanhamento());
+	public ResponseEntity<CadastramentoDoAcompanhamentoResponseDto> atualizar(@PathVariable Long id, @PathVariable Long idCreas, @PathVariable Long idUnidade, @PathVariable Long idTipoDeAcao, @PathVariable Long idPessoa, @PathVariable Long idUsuario, @Valid @RequestBody CadastramentoDoAcompanhamentoRequestDto cadastramentoDoAcompanhamentoDto) {
+		CadastramentoDoAcompanhamento cadastramentoDoAcompanhamentoatualizado = cadastramentoDoAcompanhamentoService.atualizar(id, cadastramentoDoAcompanhamentoDto.converterCadastramentoDoAcompanhamentoRequestDtoParaEntidadeCadastramentoDoAcompanhamento(idCreas, idUnidade, idTipoDeAcao, idPessoa, idUsuario));
 		return ResponseEntity.ok(CadastramentoDoAcompanhamentoResponseDto.converterCadastramentoDoAcompanhamentoParaCadastramentoDoAcompanhamentotoResponseDto(cadastramentoDoAcompanhamentoatualizado));
 	}
 	

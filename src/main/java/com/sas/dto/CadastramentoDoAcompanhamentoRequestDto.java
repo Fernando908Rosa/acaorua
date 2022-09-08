@@ -5,6 +5,11 @@ import java.util.Date;
 import javax.persistence.Column;
 
 import com.sas.entity.CadastramentoDoAcompanhamento;
+import com.sas.entity.Creas;
+import com.sas.entity.Pessoa;
+import com.sas.entity.TipoDeAcao;
+import com.sas.entity.UnidadeEspecificaDeAbordagem;
+import com.sas.entity.Usuario;
 
 public class CadastramentoDoAcompanhamentoRequestDto {
 	
@@ -20,11 +25,12 @@ public class CadastramentoDoAcompanhamentoRequestDto {
 	@Column(name = "turno")
 	private String turno;
 	
-	public CadastramentoDoAcompanhamento converterCadastramentoDoAcompanhamentoRequestDtoParaEntidadeCadastramentoDoAcompanhamento() {
-		return new CadastramentoDoAcompanhamento(null, dataInicial, diasemana, turno);
+		
+	public CadastramentoDoAcompanhamento converterCadastramentoDoAcompanhamentoRequestDtoParaEntidadeCadastramentoDoAcompanhamento(Long idCreas, Long  idUnidade, Long idTipoDeAcao, Long idPessoa, Long idUsuario) {
+		return new CadastramentoDoAcompanhamento(null, dataInicial, diasemana, turno, new Creas(idCreas), new UnidadeEspecificaDeAbordagem(idUnidade), new TipoDeAcao(idTipoDeAcao), new Pessoa(idPessoa), new Usuario(idUsuario));
 
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -56,8 +62,6 @@ public class CadastramentoDoAcompanhamentoRequestDto {
 	public void setTurno(String turno) {
 		this.turno = turno;
 	}
-
-
     	
 }
     

@@ -24,8 +24,12 @@ import javax.persistence.Table;
 		this.nome = nome;
 	}
 	
-	public UnidadeEspecificaDeAbordagem() {
-		
+	public UnidadeEspecificaDeAbordagem() {	
+	}
+	
+	public UnidadeEspecificaDeAbordagem(Long id) {
+		super();
+		this.id = id;
 	}
 
 	public Long getId() {

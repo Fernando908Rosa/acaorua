@@ -6,28 +6,65 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_cadastramentoDoAcompanhamento")
 public class CadastramentoDoAcompanhamento {
-	
-	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO)  
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private Date dataInicial;
 	private String diasemana;
 	private String turno;
 
-	public CadastramentoDoAcompanhamento( Long id, Date dataInicial, String diasemana, String turno) {
+	@ManyToOne
+	@JoinColumn(name = "id_creas", referencedColumnName = "id")
+	private Creas creas;
+
+	@ManyToOne
+	@JoinColumn(name = "id_unidade", referencedColumnName = "id")
+	private UnidadeEspecificaDeAbordagem unidadeEspecificaDeAbordagem;
+
+	@ManyToOne
+	@JoinColumn(name = "id_tipo_de_acao", referencedColumnName = "id")
+	private TipoDeAcao tipoDeAcao;
+
+	@ManyToOne
+	@JoinColumn(name = "id_pessoa", referencedColumnName = "id")
+	private Pessoa pessoa;
+
+	@ManyToOne
+	@JoinColumn(name = "id_usuario", referencedColumnName = "id")
+	private Usuario usuario;
+
+	public CadastramentoDoAcompanhamento() {
+	}
+	
+	public Creas getCreas() {
+		return creas;
+	}
+
+     public CadastramentoDoAcompanhamento(Long id, Date dataInicial, String diasemana, String turno, Creas creas,
+			UnidadeEspecificaDeAbordagem unidadeEspecificaDeAbordagem, TipoDeAcao tipoDeAcao, Pessoa pessoa,
+			Usuario usuario) {
 		super();
 		this.id = id;
 		this.dataInicial = dataInicial;
 		this.diasemana = diasemana;
 		this.turno = turno;
+		this.creas = creas;
+		this.unidadeEspecificaDeAbordagem = unidadeEspecificaDeAbordagem;
+		this.tipoDeAcao = tipoDeAcao;
+		this.pessoa = pessoa;
+		this.usuario = usuario;
 	}
 
-	public CadastramentoDoAcompanhamento() {
+	public void setCreas(Creas creas) {
+		this.creas = creas;
 	}
 
 	public Long getId() {
@@ -61,8 +98,5 @@ public class CadastramentoDoAcompanhamento {
 	public void setTurno(String turno) {
 		this.turno = turno;
 	}
-	
-	
 
 }
-	

@@ -5,6 +5,11 @@ import java.util.Date;
 import javax.persistence.Column;
 
 import com.sas.entity.CadastramentoDoAcompanhamento;
+import com.sas.entity.Creas;
+import com.sas.entity.Pessoa;
+import com.sas.entity.TipoDeAcao;
+import com.sas.entity.UnidadeEspecificaDeAbordagem;
+import com.sas.entity.Usuario;
 
 public class CadastramentoDoAcompanhamentoRequestPutDto {
 	
@@ -20,8 +25,8 @@ public class CadastramentoDoAcompanhamentoRequestPutDto {
 	@Column(name = "turno")
 	private String turno;
 	
-	public CadastramentoDoAcompanhamento converterParaEntidadeCadastramento() {
-		return new CadastramentoDoAcompanhamento(id, dataInicial, diasemana, turno);
+	public CadastramentoDoAcompanhamento converterParaEntidadeCadastramento(Long idCreas, Long  idUnidade, Long idTipoDeAcao, Long idPessoa, Long idUsuario) { 
+		return new CadastramentoDoAcompanhamento(id, dataInicial, diasemana, turno,  new Creas(idCreas), new UnidadeEspecificaDeAbordagem(idUnidade), new TipoDeAcao(idTipoDeAcao), new Pessoa(idPessoa), new Usuario(idUsuario));
 		
 	}
 

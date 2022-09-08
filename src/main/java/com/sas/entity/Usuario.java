@@ -20,7 +20,11 @@ public class Usuario {
 	
 
 	public Usuario() {
+	}
+	
+	public Usuario(Long id) {
 		super();
+		this.id = id;
 	}
 
 

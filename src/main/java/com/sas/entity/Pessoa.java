@@ -31,6 +31,12 @@ public class Pessoa {
 
 	public Pessoa() {
 	}
+	
+	public Pessoa(Long id) {
+		super();
+		this.id = id;
+	
+	}
 
 	public Long getId() {
 		return id;
