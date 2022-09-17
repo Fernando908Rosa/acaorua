@@ -47,7 +47,7 @@ public class PessoaController {
 				: ResponseEntity.notFound().build();
 	}
 
-	@PostMapping
+	@PostMapping("/pessoa")
 	public ResponseEntity<PessoaResponseDto> salvar(@Valid @RequestBody PessoaRequestDto pessoaDto) {
 		Pessoa pessoaSalva = pessoaService.salvar(pessoaDto.converterPessoaRequestDtoParaEntidadePessoa());
 		return ResponseEntity.status(HttpStatus.CREATED)

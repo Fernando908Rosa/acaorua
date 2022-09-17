@@ -55,12 +55,12 @@ public class UsuarioRequest {
 		this.sobrenome = sobrenome;
 	}
 
-	public String getDatadenascimento() {
+	public String getDatanascimento() {
 		return datanascimento;
 	}
 
-	public void setDatadenascimento(String datadenascimento) {
-		this.datanascimento = datadenascimento;
+	public void setDatanascimento(String datanascimento) {
+		this.datanascimento = datanascimento;
 	}
 
 	public Integer getCpf() {

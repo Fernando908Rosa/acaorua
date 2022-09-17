@@ -43,10 +43,6 @@ public class CadastramentoDoAcompanhamento {
 
 	public CadastramentoDoAcompanhamento() {
 	}
-	
-	public Creas getCreas() {
-		return creas;
-	}
 
      public CadastramentoDoAcompanhamento(Long id, Date dataInicial, String diasemana, String turno, Creas creas,
 			UnidadeEspecificaDeAbordagem unidadeEspecificaDeAbordagem, TipoDeAcao tipoDeAcao, Pessoa pessoa,
@@ -61,10 +57,6 @@ public class CadastramentoDoAcompanhamento {
 		this.tipoDeAcao = tipoDeAcao;
 		this.pessoa = pessoa;
 		this.usuario = usuario;
-	}
-
-	public void setCreas(Creas creas) {
-		this.creas = creas;
 	}
 
 	public Long getId() {
@@ -99,4 +91,45 @@ public class CadastramentoDoAcompanhamento {
 		this.turno = turno;
 	}
 
+	public Creas getCreas() {
+		return creas;
+	}
+
+	public void setCreas(Creas creas) {
+		this.creas = creas;
+	}
+
+	public UnidadeEspecificaDeAbordagem getUnidadeEspecificaDeAbordagem() {
+		return unidadeEspecificaDeAbordagem;
+	}
+
+	public void setUnidadeEspecificaDeAbordagem(UnidadeEspecificaDeAbordagem unidadeEspecificaDeAbordagem) {
+		this.unidadeEspecificaDeAbordagem = unidadeEspecificaDeAbordagem;
+	}
+
+	public TipoDeAcao getTipoDeAcao() {
+		return tipoDeAcao;
+	}
+
+	public void setTipoDeAcao(TipoDeAcao tipoDeAcao) {
+		this.tipoDeAcao = tipoDeAcao;
+	}
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	
 }

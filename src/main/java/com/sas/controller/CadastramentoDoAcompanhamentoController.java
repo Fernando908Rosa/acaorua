@@ -46,7 +46,7 @@ public class CadastramentoDoAcompanhamentoController {
 			: ResponseEntity.notFound().build();		
 	}
 	
-	@PostMapping("/cadastramentoDoAcompanhamento")
+	@PostMapping("/cadastramentoDoAcompanhamento/{idCreas}/{idUnidade}/{idTipoDeAcao}/{idPessoa}/{idUsuario}")
 	public ResponseEntity<CadastramentoDoAcompanhamentoResponseDto> salvar(@PathVariable Long idCreas, @PathVariable Long idUnidade, @PathVariable Long idTipoDeAcao, @PathVariable Long idPessoa, @PathVariable Long idUsuario, @Valid @RequestBody CadastramentoDoAcompanhamentoRequestDto cadastramentoDoAcompanhamentoDto) {
 		CadastramentoDoAcompanhamento cadastramentoDoAcompanhamentoSalva = cadastramentoDoAcompanhamentoService.salvar(cadastramentoDoAcompanhamentoDto.converterCadastramentoDoAcompanhamentoRequestDtoParaEntidadeCadastramentoDoAcompanhamento(idCreas, idUnidade, idTipoDeAcao, idPessoa, idUsuario));
 		return ResponseEntity.status(HttpStatus.CREATED).body(CadastramentoDoAcompanhamentoResponseDto.converterCadastramentoDoAcompanhamentoParaCadastramentoDoAcompanhamentotoResponseDto(cadastramentoDoAcompanhamentoSalva));

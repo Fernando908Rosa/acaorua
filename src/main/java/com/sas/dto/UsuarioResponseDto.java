@@ -15,17 +15,17 @@ public class UsuarioResponseDto {
 	@Column(name = "sobrenome")
 	private String sobrenome;
 	
-	@Column(name = "datadenascimento")
-	private String datadenascimento;
+	@Column(name = "datanascimento")
+	private String datanascimento;
 	
 	@Column(name = "cpf")
 	private Integer cpf;
 
-	public UsuarioResponseDto(Long id,String nome, String sobrenome, String datadenascimento, Integer cpf) {
+	public UsuarioResponseDto(Long id,String nome, String sobrenome, String datanascimento, Integer cpf) {
 		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
-		this.datadenascimento = datadenascimento;
+		this.datanascimento = datanascimento;
 		this.cpf = cpf;
 	}
 	
@@ -64,13 +64,13 @@ public class UsuarioResponseDto {
 	}
 
 
-	public String getDatadenascimento() {
-		return datadenascimento;
+	public String getDatanascimento() {
+		return datanascimento;
 	}
 
 
-	public void setDatadenascimento(String datadenascimento) {
-		this.datadenascimento = datadenascimento;
+	public void setDatanascimento(String datanascimento) {
+		this.datanascimento = datanascimento;
 	}
 
 
