@@ -25,20 +25,26 @@ import com.sas.dto.PessoaResponseDto;
 import com.sas.entity.Pessoa;
 import com.sas.service.PessoaService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(tags = "Pessoas")
 @RequestMapping("/api")
 @RestController
 public class PessoaController {
 
 	@Autowired
 	private PessoaService pessoaService;
-
+    
+	@ApiOperation(value = "Listar", nickname = "listarTodos")
 	@GetMapping("/pessoas")
 	public List<PessoaResponseDto> getPessoa() {
 		return pessoaService.listarPessoas().stream()
 				.map(pessoa -> PessoaResponseDto.converterPessoaParaPessoaResponseDto(pessoa))
 				.collect(Collectors.toList());
 	}
-
+    
+	@ApiOperation(value = "Buscar Por Id", nickname = "buscarPorId")
 	@GetMapping("/pessoa/{id}")
 	public ResponseEntity<PessoaResponseDto> buscarPorId(@PathVariable Long id) {
 		Optional<Pessoa> pessoa = pessoaService.buscarPorId(id);
@@ -46,14 +52,16 @@ public class PessoaController {
 				? ResponseEntity.ok(PessoaResponseDto.converterPessoaParaPessoaResponseDto(pessoa.get()))
 				: ResponseEntity.notFound().build();
 	}
-
+    
+	@ApiOperation(value = "Salvar", nickname = "salvarPessoas")
 	@PostMapping("/pessoa")
 	public ResponseEntity<PessoaResponseDto> salvar(@Valid @RequestBody PessoaRequestDto pessoaDto) {
 		Pessoa pessoaSalva = pessoaService.salvar(pessoaDto.converterPessoaRequestDtoParaEntidadePessoa());
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(PessoaResponseDto.converterPessoaParaPessoaResponseDto(pessoaSalva));
 	}
-
+    
+	@ApiOperation(value = "Atualizar", nickname = "atualizarPessoas")
 	@PutMapping("/pessoa/{id}")
 	public ResponseEntity<PessoaResponseDto> atualizar(@PathVariable Long id,
 			@Valid @RequestBody PessoaRequestDto pessoaDto) {
@@ -61,6 +69,8 @@ public class PessoaController {
 		return ResponseEntity.ok(PessoaResponseDto.converterPessoaParaPessoaResponseDto(pessoaAtualizada));
 
 	}
+    
+	@ApiOperation(value = "Deletar", nickname = "deletarPessoas")
 
 	@DeleteMapping("/pessoa/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)

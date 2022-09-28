@@ -21,7 +21,6 @@ public class Pessoa {
 	private Integer cpf;
 
 	public Pessoa(Long id, String nome, String sobrenome, String datanascimento, Integer cpf) {
-		super();
 		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;

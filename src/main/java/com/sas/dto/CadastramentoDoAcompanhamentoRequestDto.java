@@ -30,34 +30,42 @@ public class CadastramentoDoAcompanhamentoRequestDto {
 		return new CadastramentoDoAcompanhamento(null, dataInicial, diasemana, turno, new Creas(idCreas), new UnidadeEspecificaDeAbordagem(idUnidade), new TipoDeAcao(idTipoDeAcao), new Pessoa(idPessoa), new Usuario(idUsuario));
 
 	}
-	
+
+
 	public Long getId() {
 		return id;
 	}
+
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+
 	public Date getDataInicial() {
 		return dataInicial;
 	}
+
 
 	public void setDataInicial(Date dataInicial) {
 		this.dataInicial = dataInicial;
 	}
 
+
 	public String getDiasemana() {
 		return diasemana;
 	}
+
 
 	public void setDiasemana(String diasemana) {
 		this.diasemana = diasemana;
 	}
 
+
 	public String getTurno() {
 		return turno;
 	}
+
 
 	public void setTurno(String turno) {
 		this.turno = turno;
