@@ -4,9 +4,9 @@ import javax.persistence.Column;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.sas.entity.UnidadeEspecificaDeAbordagem;
+import com.sas.entity.Unidade;
 
-public class UnidadeEspecificaDeAbordagemRequestPutDto {
+public class UnidadeRequestPutDto {
 	
 	@Column(name = "id")
 	private Long id;
@@ -15,8 +15,8 @@ public class UnidadeEspecificaDeAbordagemRequestPutDto {
 	@Length(min = 5, max = 70, message = "digite nome corretamente entre 5 a 70 caracteres")
 	private String nome;
 	
-	public UnidadeEspecificaDeAbordagem converterParaEntidadeUnidadeEspecificaDeAbordagem() {
-		return new UnidadeEspecificaDeAbordagem(id, nome);
+	public Unidade converterParaEntidadeUnidade() {
+		return new Unidade(id, nome);
 	}
 
 	public Long getId() {

@@ -11,8 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_cadastramentoDoAcompanhamento")
-public class CadastramentoDoAcompanhamento {
+@Table(name = "tb_acompanhamento")
+public class Acompanhamento {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,7 +27,7 @@ public class CadastramentoDoAcompanhamento {
 
 	@ManyToOne
 	@JoinColumn(name = "id_unidade", referencedColumnName = "id")
-	private UnidadeEspecificaDeAbordagem unidadeEspecificaDeAbordagem;
+	private Unidade unidade;
 
 	@ManyToOne
 	@JoinColumn(name = "id_tipo_de_acao", referencedColumnName = "id")
@@ -41,19 +41,19 @@ public class CadastramentoDoAcompanhamento {
 	@JoinColumn(name = "id_usuario", referencedColumnName = "id")
 	private Usuario usuario;
 
-	public CadastramentoDoAcompanhamento() {
+	public Acompanhamento() {
 	}
 
-     public CadastramentoDoAcompanhamento(Long id, Date dataInicial, String diasemana, String turno, Creas creas,
-			UnidadeEspecificaDeAbordagem unidadeEspecificaDeAbordagem, TipoDeAcao tipoDeAcao, Pessoa pessoa,
+     public Acompanhamento(Long id, Date dataInicial, String diasemana, String turno, Creas creas,
+			Unidade unidade, TipoDeAcao tipoDeAcao, Pessoa pessoa,
 			Usuario usuario) {
-		super();
+    	 
 		this.id = id;
 		this.dataInicial = dataInicial;
 		this.diasemana = diasemana;
 		this.turno = turno;
 		this.creas = creas;
-		this.unidadeEspecificaDeAbordagem = unidadeEspecificaDeAbordagem;
+		this.unidade = unidade;
 		this.tipoDeAcao = tipoDeAcao;
 		this.pessoa = pessoa;
 		this.usuario = usuario;
@@ -99,12 +99,12 @@ public class CadastramentoDoAcompanhamento {
 		this.creas = creas;
 	}
 
-	public UnidadeEspecificaDeAbordagem getUnidadeEspecificaDeAbordagem() {
-		return unidadeEspecificaDeAbordagem;
+	public Unidade getUnidade() {
+		return unidade;
 	}
 
-	public void setUnidadeEspecificaDeAbordagem(UnidadeEspecificaDeAbordagem unidadeEspecificaDeAbordagem) {
-		this.unidadeEspecificaDeAbordagem = unidadeEspecificaDeAbordagem;
+	public void setUnidade(Unidade unidade) {
+		this.unidade = unidade;
 	}
 
 	public TipoDeAcao getTipoDeAcao() {
@@ -130,6 +130,5 @@ public class CadastramentoDoAcompanhamento {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-
 	
 }

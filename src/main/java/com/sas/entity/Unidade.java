@@ -9,8 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 	
 	@Entity 
-	@Table(name = "tb_unidadeEspecificaDeAbordagem")
-	public class UnidadeEspecificaDeAbordagem {
+	@Table(name = "tb_unidade")
+	public class Unidade {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,17 +18,15 @@ import javax.persistence.Table;
 	private String nome;
 
 
-	public UnidadeEspecificaDeAbordagem(Long id, String nome) {
-		super();
+	public Unidade(Long id, String nome) {
 		this.id = id;
 		this.nome = nome;
 	}
 	
-	public UnidadeEspecificaDeAbordagem() {	
+	public Unidade() {	
 	}
 	
-	public UnidadeEspecificaDeAbordagem(Long id) {
-		super();
+	public Unidade(Long id) {
 		this.id = id;
 	}
 
@@ -50,7 +48,7 @@ import javax.persistence.Table;
 
 	@Override
 	public String toString() {
-		return "UnidadeEspecificaDeAbordagem [id=" + id + ", nome=" + nome + "]";
+		return "Unidade [id=" + id + ", nome=" + nome + "]";
 	}
 
 	@Override
@@ -66,7 +64,7 @@ import javax.persistence.Table;
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UnidadeEspecificaDeAbordagem other = (UnidadeEspecificaDeAbordagem) obj;
+		Unidade other = (Unidade) obj;
 		return Objects.equals(id, other.id) && Objects.equals(nome, other.nome);
 	}
 	

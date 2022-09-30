@@ -24,6 +24,10 @@ import com.sas.dto.TipoDeAcaoResponseDto;
 import com.sas.entity.TipoDeAcao;
 import com.sas.service.TipoDeAcaoService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(tags = "TipoDeAcao")
 @RequestMapping("/api")
 @RestController
 public class TipoDeAcaoController {
@@ -31,6 +35,7 @@ public class TipoDeAcaoController {
 	@Autowired
 	TipoDeAcaoService tipoDeAcaoService;
 	
+	@ApiOperation(value = "Listar", nickname = "listarTodos")
 	@GetMapping("/tipoDeAcao")
 	public List<TipoDeAcaoResponseDto> getTipoDeAcao() {
 		return tipoDeAcaoService.ListarTipoDeAcao().stream()
@@ -38,6 +43,7 @@ public class TipoDeAcaoController {
                 .collect(Collectors.toList());			
 	}
 	
+	@ApiOperation(value = "Buscar Por Id", nickname = "buscarPorId")
 	@GetMapping(("/tipoDeAcao{id}"))
 	public ResponseEntity <TipoDeAcaoResponseDto> buscarPorId(@PathVariable Long id) {
 		Optional<TipoDeAcao> tipoDeacao = tipoDeAcaoService.buscarPorId(id);
@@ -46,18 +52,21 @@ public class TipoDeAcaoController {
 				: ResponseEntity.notFound().build();	
 	}
 	
+	@ApiOperation(value = "Salvar", nickname = "salvarTipoDeAcao")
 	@PostMapping("/tipoDeAcao")
 	public ResponseEntity<TipoDeAcaoResponseDto> salvar(@Valid @RequestBody TipoDeAcaoRequestDto tipoDeAcaoDto) {
 		TipoDeAcao tipoDeAcaoSalva = tipoDeAcaoService.salvar(tipoDeAcaoDto.converterTipoDeAcaoRequestDtoParaEntidadeTipoDeAcao());
 		return ResponseEntity.status(HttpStatus.CREATED).body(TipoDeAcaoResponseDto.converterTipoDeAcaoParaTipoDeAcaoResponseDto(tipoDeAcaoSalva));
 	}
 	
+	@ApiOperation(value = "Atualizar", nickname = "atualizarTipoDeAcao")
 	@PutMapping("/tipoDeAcao/{id}")
 	public ResponseEntity<TipoDeAcaoResponseDto> atualizar(@PathVariable Long id, @Valid @RequestBody TipoDeAcaoRequestDto tipoDeAcaoDto) {
 		TipoDeAcao tipoDeAcaoAtualizado = tipoDeAcaoService.atualizar(id, tipoDeAcaoDto.converterTipoDeAcaoRequestDtoParaEntidadeTipoDeAcao());
 		return ResponseEntity.ok(TipoDeAcaoResponseDto.converterTipoDeAcaoParaTipoDeAcaoResponseDto(tipoDeAcaoAtualizado));
 	}
 	
+	@ApiOperation(value = "Deletar", nickname = "deletarTipoDeAcao")
 	@DeleteMapping("/tipoDeAcao/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(Long id) {

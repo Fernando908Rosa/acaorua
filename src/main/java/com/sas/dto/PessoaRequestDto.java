@@ -1,5 +1,7 @@
 package com.sas.dto;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 
 import org.hibernate.validator.constraints.Length;
@@ -18,26 +20,24 @@ public class PessoaRequestDto {
 	@Column(name = "sobrenome")
 	private  String sobrenome;
 	
-	@Column(name = "datanascimento")
-	private  String datanascimento;
+	@Column(name = "dataInicial")
+	private  Date dataInicial;
 	
 	@Column(name = "cpf")
 	private Integer cpf;
 	
 	public Pessoa converterPessoaRequestDtoParaEntidadePessoa() {
-		return new Pessoa(id , nome, sobrenome, datanascimento, cpf);
-		
+		return new Pessoa(id, nome, sobrenome, dataInicial, cpf);			
+				
 	}
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public String getNome() {
 		return nome;
@@ -55,12 +55,12 @@ public class PessoaRequestDto {
 		this.sobrenome = sobrenome;
 	}
 
-	public String getDatadenascimento() {
-		return datanascimento;
+	public Date getDataInicial() {
+		return dataInicial;
 	}
 
-	public void setDatadenascimento(String datadenascimento) {
-		this.datanascimento = datadenascimento;
+	public void setDataInicial(Date dataInicial) {
+		this.dataInicial = dataInicial;
 	}
 
 	public Integer getCpf() {
@@ -69,7 +69,6 @@ public class PessoaRequestDto {
 
 	public void setCpf(Integer cpf) {
 		this.cpf = cpf;
-	
 	}
 
 }	

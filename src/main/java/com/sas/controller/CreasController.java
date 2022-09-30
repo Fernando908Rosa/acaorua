@@ -24,6 +24,10 @@ import com.sas.dto.CreasRequestDto;
 import com.sas.entity.Creas;
 import com.sas.service.CreasService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(tags = "Creas")
 @RequestMapping("/api")
 @RestController
 public class CreasController {
@@ -31,6 +35,7 @@ public class CreasController {
 	@Autowired
 	private CreasService creasService;
 	
+	@ApiOperation(value = "Listar", nickname = "listarTodos")
 	@GetMapping("/creas")
 	public List<CreasResponseDto> getCreas() {
 		return creasService.listarCreas().stream()
@@ -38,6 +43,7 @@ public class CreasController {
 				.collect(Collectors.toList());
 	}
 	
+	@ApiOperation(value = "Buscar Por Id", nickname = "buscarPorId")
 	@GetMapping("/creas/{id}")
 	public ResponseEntity <CreasResponseDto> buscarPorId(@PathVariable Long id) {
 		Optional<Creas> creas = creasService.buscarPorId(id);
@@ -46,12 +52,14 @@ public class CreasController {
 				: ResponseEntity.notFound().build();
 	}
      
+	@ApiOperation(value = "Salvar", nickname = "salvarCreas")
 	@PostMapping("/creas")
 	public ResponseEntity<CreasResponseDto> salvar(@Valid @RequestBody CreasRequestDto creasDto) {
 		Creas creasSalva = creasService.salvar(creasDto.converterCreasRequestDtoParaEntidadeCreas());
 		return ResponseEntity.status(HttpStatus.CREATED).body(CreasResponseDto.converterCreasParaCreasResponseDto(creasSalva));
 	}
     
+	@ApiOperation(value = "Atualizar", nickname = "atualizarCreas")
     @PutMapping("/creas/{id}")
     public ResponseEntity<CreasResponseDto> atualizar(@PathVariable Long id, @Valid @RequestBody CreasRequestDto creasDto) {
     	Creas creasAtualizado = creasService.atualizar(id, creasDto.converterCreasRequestDtoParaEntidadeCreas());
@@ -59,6 +67,7 @@ public class CreasController {
     	
 	}
 	
+	@ApiOperation(value = "Deletar", nickname = "deletarCreas")
 	@DeleteMapping("/creas/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(Long id) {

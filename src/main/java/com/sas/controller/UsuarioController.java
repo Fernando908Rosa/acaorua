@@ -24,6 +24,8 @@ import com.sas.dto.UsuarioResponseDto;
 import com.sas.entity.Usuario;
 import com.sas.service.UsuarioService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/api")
 public class UsuarioController {
@@ -32,6 +34,7 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
+	@ApiOperation(value = "Listar", nickname = "listarTodos")
 	@GetMapping("/usuarios")
 	public List<UsuarioResponseDto> getUsuario() {
 		return usuarioService.listarUsuario().stream()
@@ -39,6 +42,7 @@ public class UsuarioController {
 				.collect(Collectors.toList());
 	}
 	
+	@ApiOperation(value = "Buscar Por Id", nickname = "buscarPorId")
 	@GetMapping("/usuario/{id}")
 	public ResponseEntity <UsuarioResponseDto> buscarPorId(@PathVariable Long id) {
 		Optional<Usuario> usuario = usuarioService.buscarPorId(id);
@@ -47,12 +51,14 @@ public class UsuarioController {
 				: ResponseEntity.notFound().build();
 	}
      
+	@ApiOperation(value = "Salvar", nickname = "salvarUsuario")
 	@PostMapping("/usuario")
 	public ResponseEntity<UsuarioResponseDto> salvar(@Valid @RequestBody UsuarioRequest usuarioDto) {
 		Usuario usuarioSalva = usuarioService.salvar(usuarioDto.converterUsuarioRequestDtoParaEntidadeUsuario());
 		return ResponseEntity.status(HttpStatus.CREATED).body(UsuarioResponseDto.converterUsuarioParaUsuarioResponseDto(usuarioSalva));
 	}
     
+	@ApiOperation(value = "Atualizar", nickname = "atualizarUsuario")
     @PutMapping("/usuario/{id}")
     public ResponseEntity<UsuarioResponseDto> atualizar(@PathVariable Long id, @Valid @RequestBody UsuarioRequest usuarioDto) {
     	Usuario usuarioAtualizado = usuarioService.atualizar(id, usuarioDto.converterUsuarioRequestDtoParaEntidadeUsuario());
@@ -60,6 +66,7 @@ public class UsuarioController {
     	
 	}
 	
+	@ApiOperation(value = "Deletar", nickname = "deletarUsuario")
 	@DeleteMapping("/usuario/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete( Long id) {
