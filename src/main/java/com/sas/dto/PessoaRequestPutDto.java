@@ -27,8 +27,17 @@ public class PessoaRequestPutDto {
 	@Column(name = "cpf")
 	private Integer cpf;
 	
+	@Column(name = "nomepai")
+	private String nomepai;
+	
+	@Column(name = "nomemae")
+	private String nomemae;
+	
+	@Column(name = "genero")
+	private String genero;
+	
 	public Pessoa converterParaEntidadePessoa() {
-		return new Pessoa(id, nome, sobrenome, dataInicial, cpf);
+		return new Pessoa(id, nome, sobrenome, dataInicial, cpf, nomepai, nomemae, genero);
 	}
 
 	public Long getId() {
@@ -69,6 +78,30 @@ public class PessoaRequestPutDto {
 
 	public void setCpf(Integer cpf) {
 		this.cpf = cpf;
+	}
+
+	public String getNomepai() {
+		return nomepai;
+	}
+
+	public void setNomepai(String nomepai) {
+		this.nomepai = nomepai;
+	}
+
+	public String getNomemae() {
+		return nomemae;
+	}
+
+	public void setNomemae(String nomemae) {
+		this.nomemae = nomemae;
+	}
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
 	}
 
 }	
