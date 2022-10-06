@@ -3,8 +3,11 @@ package com.sas.dto;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 import com.sas.entity.Pessoa;
+import com.sas.enums.Genero;
 
 public class PessoaResponseDto {
 	
@@ -30,10 +33,11 @@ public class PessoaResponseDto {
 	private String nomemae;
 	
 	@Column(name = "genero")
-	private String genero;
+	@Enumerated(EnumType.STRING)
+	private Genero genero;
 
 	public PessoaResponseDto(Long id, String nome, String sobrenome, Date dataInicial, Integer cpf, String nomepai,
-			String nomemae, String genero) {
+			String nomemae, Genero genero) {
 		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
@@ -104,11 +108,11 @@ public class PessoaResponseDto {
 		this.nomemae = nomemae;
 	}
 
-	public String getGenero() {
+	public Genero getGenero() {
 		return genero;
 	}
 
-	public void setGenero(String genero) {
+	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
 

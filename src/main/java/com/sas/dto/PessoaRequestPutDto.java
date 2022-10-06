@@ -3,10 +3,13 @@ package com.sas.dto;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 import org.hibernate.validator.constraints.Length;
 
 import com.sas.entity.Pessoa;
+import com.sas.enums.Genero;
 
 
 public class PessoaRequestPutDto {
@@ -34,7 +37,8 @@ public class PessoaRequestPutDto {
 	private String nomemae;
 	
 	@Column(name = "genero")
-	private String genero;
+	@Enumerated(EnumType.STRING)
+	private Genero genero;
 	
 	public Pessoa converterParaEntidadePessoa() {
 		return new Pessoa(id, nome, sobrenome, dataInicial, cpf, nomepai, nomemae, genero);
@@ -96,11 +100,11 @@ public class PessoaRequestPutDto {
 		this.nomemae = nomemae;
 	}
 
-	public String getGenero() {
+	public Genero getGenero() {
 		return genero;
 	}
 
-	public void setGenero(String genero) {
+	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
 

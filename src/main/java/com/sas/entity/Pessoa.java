@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.sas.enums.Genero;
+
 @Entity
 @Table(name = "tb_pessoa")
 public class Pessoa {
@@ -22,10 +24,10 @@ public class Pessoa {
 	private Integer cpf;
 	private String nomepai;
 	private String nomemae;
-	private String genero;
+	private Genero genero;
 	
 	public Pessoa(Long id, String nome, String sobrenome, Date dataInicial, Integer cpf, String nomepai, String nomemae,
-			String genero) {
+			Genero genero) {
 		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
@@ -35,12 +37,11 @@ public class Pessoa {
 		this.nomemae = nomemae;
 		this.genero = genero;
 	}
-
+	
 	public Pessoa() {
 	}
 
-	public Pessoa(Long id) {
-		this.id = id;
+	public Pessoa(Long idPessoa) {
 	}
 
 	public Long getId() {
@@ -99,11 +100,11 @@ public class Pessoa {
 		this.nomemae = nomemae;
 	}
 
-	public String getGenero() {
+	public Genero getGenero() {
 		return genero;
 	}
 
-	public void setGenero(String genero) {
+	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
 
@@ -126,11 +127,11 @@ public class Pessoa {
 			return false;
 		Pessoa other = (Pessoa) obj;
 		return Objects.equals(cpf, other.cpf) && Objects.equals(dataInicial, other.dataInicial)
-				&& Objects.equals(genero, other.genero) && Objects.equals(id, other.id)
-				&& Objects.equals(nome, other.nome) && Objects.equals(nomemae, other.nomemae)
-				&& Objects.equals(nomepai, other.nomepai) && Objects.equals(sobrenome, other.sobrenome);
-	}	
-	
+				&& genero == other.genero && Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
+				&& Objects.equals(nomemae, other.nomemae) && Objects.equals(nomepai, other.nomepai)
+				&& Objects.equals(sobrenome, other.sobrenome);
+	}
+
 }
 	
 	
